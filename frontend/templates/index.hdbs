@@ -3,5 +3,11 @@
   <p>
     {{#link-to "tasks"}}View Tasks{{/link-to}}
   </p>
+  
+  <ul>
+    {{#each option in controller}}
+      <li>{{option.title}}</li>
+    {{/each}}
+  </ul>
 
 </div>

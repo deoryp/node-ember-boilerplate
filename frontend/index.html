@@ -18,8 +18,24 @@
     <script src="/app.js"></script>
     <script src="/store.js"></script>
     <script src="/routes/tasksRoute.js"></script>
+    <script src="/routes/IndexRoute.js"></script>
     <script src="/controllers/tasksController.js"></script>
+    <script src="/controllers/IndexController.js"></script>
     <script src="/models/tasks.js"></script>
+    <script src="/models/options.js"></script>
+    <script src="/socket.io.js"></script>
 
+    <ul id="messages"></ul>
+    <script>
+      var socket = io();
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
   </body>
 </html>
